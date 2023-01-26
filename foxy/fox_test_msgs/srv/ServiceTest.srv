@@ -1,0 +1,9 @@
+# リクエスト
+
+# 型 変数
+string srv_request
+
+---
+# レスポンス
+
+bool srv_result

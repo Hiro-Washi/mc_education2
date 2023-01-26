@@ -1,0 +1,9 @@
+# ゴールリクエスト
+string ac_request
+---
+# レスポンス
+bool ac_result
+
+---
+# フィードバック
+string ac_feedback
