@@ -32,7 +32,7 @@ ament_export_dependencies(rosidl_default_runtime)
 
 # 実行可能にするC++ノードを任意の変数（cpp_exec）に格納し、追加
 add_executable(cpp_exec
-  src/ros2_comm_tmp.cpp
+  src/fox_comm_tmp.cpp
   src/rps_learn.cpp
   src/rps_hand_generator.cpp
 )
@@ -47,7 +47,7 @@ install(TARGETS cpp_exec
 )
 
 # Python設定
-ament_python_install_packages(${PROJECT_NAME})
+ament_python_install_package(${PROJECT_NAME})
 # 実行するpythonノードのライブラリ依存関係を設定
 install(PROGRAMS
   scripts/fox_comm_tmp.py
@@ -60,7 +60,7 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}
 )
 # インクルードディレクトリを設定
-include_derectories(include)
+include_directories(include)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

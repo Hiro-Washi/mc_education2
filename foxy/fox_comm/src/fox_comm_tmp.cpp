@@ -11,9 +11,9 @@
 #include "rclcpp/time.hpp"
 
 // カスタムメッセージ
-#include "fox_comm_msgs/msg/my_message.hpp"
-#include "fox_comm_msgs/srv/service_test.hpp"
-#include "fox_comm_msgs/action/action_test.hpp"
+#include "fox_test_msgs/msg/my_message.hpp"
+#include "fox_test_msgs/srv/service_test.hpp"
+#include "fox_test_msgs/action/action_test.hpp"
 
 
 class Navi2LocationServer : public rclcpp::Node
@@ -23,3 +23,4 @@ private:
 
 public:
 
+}
