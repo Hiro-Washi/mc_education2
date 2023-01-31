@@ -5,6 +5,7 @@
 # RCLPYの通信構文をまとめたノード
 #---------------------------------
 
+# ROS2
 import time
 # PythonのROS2クライアントライブラリ
 import rclpy
@@ -20,7 +21,6 @@ from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.duration import Duration
 # 同時にゴール処理を実行できるようにするツール（本来アクションは一つのゴール以外の処理はしない）
 from rclpy.executors import MultiThreadedExecutor
-
 
 # 自作メッセージの用意
 from fox_test_msgs.msg import MyMessage
@@ -39,7 +39,7 @@ class FoxCommTmp(Node):
   def __init__(self):
     # ROSのロギング機能でログメッセージ出力
     # （ログ メッセージの重大度レベル： DEBUG >INFO >WARN >ERROR, FATAL）
-    self.get_logger().info("Ready to **navi_location_server2**")
+    self.get_logger().info("Ready to **fox_comm_tmp_server**")
     # Topicのサブスクライバー/リスナーの宣言/生成
     topic_test_sub = self.create_subscription(MyMessage, # 型
                                               'topic_test', # トピック名
@@ -81,7 +81,9 @@ class FoxCommTmp(Node):
     
     self.get_logger().info('Service resuest: ' + req.srv_request)
     
-    return result.srv_response == True
+    result.srv_response = True
+    
+    #return result.srv_response == True
 
   # アクションゴール（サービス名： action_test）を受け取ったときに実行するコールバック関数
   def asCallback(self, goal_request):
