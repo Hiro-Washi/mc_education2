@@ -43,13 +43,22 @@ private: //（本当はヘッダーに書けばいい内容）
   //rclcpp_action::Server<ActionTest> ac_test;
   // -----------------
 
-  void handleService_(
+  void handleService(
     const std::shared_ptr<MyMsg::Request> request,
     const std::shared_ptr<MyMsg::Response> response
   );
 
 public:
-  explicit FoxCommTmpServer(): Node("")
+  explicit FoxCommTmpServer(): Node("fox_comm_tmp_server"){
+    srv_test = this->create_service<SrvTest>(
+      "srv_test", std::bind(&FoxCommTmpServerhandleService, this, _1)
+    )
+  }
+
+  void handleService(const std::shared_ptr<MyMsg::Request> request,
+                     const std::shared_ptr<MyMsg::Response> response ){
+    RCLCPP_INFO(this->get_logger(),"srv.request: %s", request->srv_request);
+  }
 
 }; // class
 } // namespace

@@ -36,7 +36,8 @@ private:
   // Topic Subsctiber
   rclcpp::Subscription<Odometry>::SharedPtr odom_sub;
   // Custom Sub
-  //rclcpp::Subscription<>::SharedPtr bc_sub;
+  rclcpp::Subscription<Float64>::SharedPtr translate_sub;
+  rclcpp::Subscription<Float64>::SharedPtr rotate_sub;
   
 
 public:
@@ -56,7 +57,9 @@ public:
   //rclcpp::Rate loop_rate
 
   // functions
-  void debag();
+  void createSubs();
+  //void dist(const std::shared_ptr<Float64> msg);
+  //void rotateSrv(const std::shared_ptr<Float64> msg);
   void odomCB(const Odometry::SharedPtr msg);
   void pubTwist();
   void translateDist(Float64 dist, Float64 speed = 0.2);
