@@ -5,13 +5,12 @@
 
 #include <memory> // メモリ管理を自動でやってくれるスマートポインタ―というのを使うために
 #include <functional> // std::bindを使う。関数の引数を固定化し、限定的な関数を作り出せる
-#include <chrono> // 処理時間の計測に使う.C++14の一つの機能
-#include <vector> // listの扱いが厄介なため行列のデータ処理にvectorを使うよ
-#include <algorithm> // std::find関数を使うため
+#include <chrono> // 処理時間の計測に使う.C++14の一つの機能. 500ms
+#include <vector> // std::listの扱いが厄介なため行列のデータ処理にvectorを使うよ
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
-#include "rclcpp/time.hpp"
+// #include "rclcpp/time.hpp"
 
 // カスタムメッセージ
 #include "fox_test_msgs/msg/my_message.hpp"
@@ -51,7 +50,7 @@ private: //（本当はヘッダーに書けばいい内容）
 public:
   explicit FoxCommTmpServer(): Node("fox_comm_tmp_server"){
     srv_test = this->create_service<SrvTest>(
-      "srv_test", std::bind(&FoxCommTmpServerhandleService, this, _1)
+      "srv_test", std::bind(&FoxCommTmpServer::handleService, this, _1)
     )
   }
 

@@ -26,8 +26,14 @@ FoxBaseControl::createNodes(){
 
 FoxBaseControl::odomCB(const Odometry::SharedPtr msg){
   quaternion = {
-    msg->
+    msg->pose.pose.orientation.x,
+    msg->pose.pose.orientation.y,
+    msg->pose.pose.orientation.z,
+    msg->pose.pose.orientation.w
   }
+  current_euler = 
+    tf2.transformations.euler_from_quaternion(quaternion)
+    
 }
 
 
